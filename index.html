@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comic Planner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="planning-panel">
+      <div class="planning-inner">
+        <div class="panel-stack">
+          <section class="popout-panel active" id="scriptingPanel">
+            <div class="panel-header">
+              <h2>Scripting</h2>
+            </div>
+
+            <textarea id="scriptInput" spellcheck="false">Comic Template
+
+-- 01 | Intro |
+
+-- 02 | Intro |
+
+-- 03 | Intro |
+
+-- 04 | Development |
+
+-- 05 | Development |
+
+-- 06 | Development |
+
+-- 07 | Development |
+
+-- 08 | Development |
+
+-- 09 | Development |
+
+-- 10 | Development |
+
+-- 11 | Development |
+
+-- 12 | Twist |
+
+-- 13 | Conclusion |
+
+--14 | Conclusion |
+
+-- 15 | Conclusion |
+
+-- 16 | Conclusion |</textarea>
+
+            <div class="panel-help">
+              First line is the comic title.<br />
+              Then each page starts with:<br />
+              <code>-- Page Title | Category | Feeling</code><br />
+              Any following lines become that page's descriptive text until the next page.
+            </div>
+          </section>
+
+          <section class="popout-panel" id="settingsPanel">
+            <div class="panel-header">
+              <h2>Settings</h2>
+            </div>
+
+            <div class="settings-group">
+              <label for="categoriesInput">Categories and colours</label>
+              <textarea id="categoriesInput" spellcheck="false">Prologue|#fbe4d8
+Intro|#ffe9b8
+Development|#ffd9d9
+Twist|#ece4ff
+Conclusion|#dfefff</textarea>
+              <p class="setting-note">Format: <code>Category|#hexcolour</code></p>
+            </div>
+          </section>
+        </div>
+
+        <div class="panel-tab-buttons">
+          <button
+            class="tab-button active"
+            id="openScripting"
+            type="button"
+            title="Open Scripting"
+            aria-label="Open Scripting"
+          >
+            ✎
+          </button>
+          <button
+            class="tab-button"
+            id="openSettings"
+            type="button"
+            title="Open Settings"
+            aria-label="Open Settings"
+          >
+            ⚙
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="layout-panel">
+      <div class="layout-header">
+        <h1 id="layoutTitle">Layout</h1>
+      </div>
+      <div id="layoutCanvas" class="layout-canvas"></div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
