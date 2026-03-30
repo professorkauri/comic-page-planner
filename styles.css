@@ -65,6 +65,18 @@ body {
   pointer-events: auto;
 }
 
+.planning-panel.collapsed {
+  width: 44px;
+  min-width: 44px;
+  max-width: 44px;
+}
+
+.planning-panel.collapsed .panel-stack {
+  flex: 0 0 0;
+  width: 0;
+  overflow: hidden;
+}
+
 .panel-header {
   position: sticky;
   top: 0;
@@ -130,6 +142,10 @@ body {
   align-items: center;
   padding-top: 12px;
   gap: 10px;
+}
+
+.planning-panel.collapsed .panel-tab-buttons {
+  border-left: none;
 }
 
 .tab-button {
@@ -322,7 +338,7 @@ body {
   color: #666666;
   background: #ffffff;
 }
-
+/*
 @media (max-width: 980px) {
   .planning-panel {
     width: 36vw;
@@ -339,4 +355,4 @@ body {
   .page-slot.empty {
     display: none;
   }
-}
+}*/

@@ -2,21 +2,33 @@ const scriptInput = document.getElementById("scriptInput");
 const categoriesInput = document.getElementById("categoriesInput");
 const layoutCanvas = document.getElementById("layoutCanvas");
 const layoutTitle = document.getElementById("layoutTitle");
+const planningPanel = document.querySelector(".planning-panel");
 
 const scriptingPanel = document.getElementById("scriptingPanel");
 const settingsPanel = document.getElementById("settingsPanel");
+const togglePlanningBtn = document.getElementById("togglePlanning");
 
 const openScriptingBtn = document.getElementById("openScripting");
 const openSettingsBtn = document.getElementById("openSettings");
 
 function setActivePanel(panelName) {
+  const isCollapsed = planningPanel.classList.contains("collapsed");
+
+  if (isCollapsed) {
+    planningPanel.classList.remove("collapsed");
+    togglePlanningBtn.textContent = "⟨";
+    togglePlanningBtn.title = "Collapse Planning Panel";
+    togglePlanningBtn.setAttribute("aria-label", "Collapse Planning Panel");
+  }
+
   const isScripting = panelName === "scripting";
+  const isSettings = panelName === "settings";
 
   scriptingPanel.classList.toggle("active", isScripting);
-  settingsPanel.classList.toggle("active", !isScripting);
+  settingsPanel.classList.toggle("active", isSettings);
 
   openScriptingBtn.classList.toggle("active", isScripting);
-  openSettingsBtn.classList.toggle("active", !isScripting);
+  openSettingsBtn.classList.toggle("active", isSettings);
 }
 
 openScriptingBtn.addEventListener("click", () => {
@@ -25,6 +37,27 @@ openScriptingBtn.addEventListener("click", () => {
 
 openSettingsBtn.addEventListener("click", () => {
   setActivePanel("settings");
+});
+
+togglePlanningBtn.addEventListener("click", () => {
+  const isCollapsed = planningPanel.classList.toggle("collapsed");
+
+  if (isCollapsed) {
+    scriptingPanel.classList.remove("active");
+    settingsPanel.classList.remove("active");
+    openScriptingBtn.classList.remove("active");
+    openSettingsBtn.classList.remove("active");
+
+    togglePlanningBtn.textContent = "⮚";
+    togglePlanningBtn.title = "Open Planning Panel";
+    togglePlanningBtn.setAttribute("aria-label", "Open Planning Panel");
+  } else {
+    togglePlanningBtn.textContent = "⮘";
+    togglePlanningBtn.title = "Collapse Planning Panel";
+    togglePlanningBtn.setAttribute("aria-label", "Collapse Planning Panel");
+
+    setActivePanel("scripting");
+  }
 });
 
 function escapeHtml(text) {
