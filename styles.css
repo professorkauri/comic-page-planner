@@ -204,10 +204,9 @@ body {
 
 .layout-canvas {
   padding: 24px;
-  display: flex;
-  flex-direction: row;
+  display: grid;
   gap: 28px;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .spread {
@@ -228,6 +227,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .page-slot.empty {
@@ -235,7 +235,6 @@ body {
 }
 
 .page {
-  aspect-ratio: 2 / 3;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 14px;
   padding: 16px;
